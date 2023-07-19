@@ -29,7 +29,7 @@ requirements:
     - ray-core >=2.0.0
     - scipy
     - scikit-learn
-    - scikit-optimize
+    # - scikit-optimize
 
 test:
   requires:
