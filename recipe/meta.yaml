@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38]
+  skip: True  # [py<38 or ppc64le or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
@@ -22,12 +22,12 @@ requirements:
     - pip
     - setuptools
     - wheel
+    - numpy {{ numpy }}
   run:
     - python
     - ray-tune >=2.0.0
     - ray-core >=2.0.0
     - pandas
-    - numpy >=1.16
     - scipy
     - scikit-learn
     - scikit-optimize
