@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  skip: True  # [py<38 or ppc64le or s390x]
+  skip: True  # [py<38 or aarch64 or s390x]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
