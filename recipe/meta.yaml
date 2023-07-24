@@ -26,10 +26,10 @@ requirements:
   run:
     - python
     - ray-tune >=2.0.0
-    - ray-core >=2.0.0
     - scipy
     - scikit-learn
     - scikit-optimize
+    - {{ pin_compatible('numpy') }}
 
 test:
   requires:
