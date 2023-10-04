@@ -2,3 +2,4 @@ upload_channels:
   - sfe1ed40
 channels:
   - sfe1ed40
+  - https://staging.continuum.io/prefect/fs/ray-packages-feedstock/pr14/b0763c6
