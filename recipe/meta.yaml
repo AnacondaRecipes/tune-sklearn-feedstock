@@ -36,6 +36,10 @@ requirements:
     - ray-tune >=2.0.0
     - scipy
     - scikit-learn
+    # utils.py requires packaging indirectly from ray-air,
+    # see https://github.com/ray-project/tune-sklearn/blob/v0.4.6/tune_sklearn/utils.py#L17C1-L17C61 and
+    # https://github.com/ray-project/ray/blame/ray-2.3.0/python/ray/tune/integration/mlflow.py#L9
+    - packaging
 
 test:
   imports:
