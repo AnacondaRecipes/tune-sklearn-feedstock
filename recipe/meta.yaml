@@ -10,6 +10,10 @@ source:
   # https://github.com/ray-project/tune-sklearn/issues/159
   url: https://github.com/ray-project/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: f6d531f99a02de4a420cbefb96de64c8db4a014f2c7352f38a6a7a37e2103614
+  patches:
+    # Remove this patch for ray-core/ray-tune >=2.6.0, because it's will be deprecated and removed from the source code
+    # see https://github.com/ray-project/ray/blob/3aa6ede43743a098b5e0eb37ec11505f46100313/python/ray/tune/integration/mlflow.py#L15-L20
+    - fix_ray_tune_import.patch
 
 build:
   number: 1
@@ -18,6 +22,9 @@ build:
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
+  build:
+    - m2-patch  # [win]
+    - patch     # [not win]
   host:
     - python
     - pip
@@ -29,8 +36,6 @@ requirements:
     - ray-tune >=2.0.0
     - scipy
     - scikit-learn
-    # utils.py requires packaging indirectly from ray-air, see https://github.com/ray-project/tune-sklearn/blob/v0.4.6/tune_sklearn/utils.py#L17C1-L17C61
-    - packaging
 
 test:
   imports:
